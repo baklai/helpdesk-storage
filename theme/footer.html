@@ -44,23 +44,19 @@
             const ukrDate = `${day} ${months[month] || month} ${year}, ${time}`;
 
             let iconClass = 'fa-file';
-            let iconColor = '#a0aec0';
+            let iconColor = '#4a5568';
 
             if (href.endsWith('/')) {
               iconClass = 'fa-folder';
-              iconColor = '#ecc94b'; 
+              iconColor = '#3182ce';
             } else if (name.match(/\.(jpg|jpeg|png|gif|svg|webp)$/i)) {
               iconClass = 'fa-file-image';
-              iconColor = '#48bb78';
             } else if (name.match(/\.(pdf)$/i)) {
               iconClass = 'fa-file-pdf';
-              iconColor = '#f56565';
             } else if (name.match(/\.(zip|rar|7z|tar|gz)$/i)) {
               iconClass = 'fa-file-archive';
-              iconColor = '#ed8936';
             } else if (name.match(/\.(exe|msi|deb|rpm)$/i)) {
               iconClass = 'fa-file-code';
-              iconColor = '#4299e1';
             }
 
             tableHtml += `
