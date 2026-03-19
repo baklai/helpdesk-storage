@@ -1,0 +1,31 @@
+<hr>
+        <div class="footer-text text-muted small mt-3">
+            <p><i class="fas fa-info-circle"></i> Натисніть на файл, щоб завантажити. Списки оновлюються автоматично.</p>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const links = document.querySelectorAll('pre a');
+            
+            links.forEach(link => {
+                const text = link.innerText;
+                const href = link.getAttribute('href');
+                let icon = 'fa-file'; 
+
+                if (href === "../") icon = 'fa-level-up-alt';
+                else if (href.endsWith('/')) icon = 'fa-folder text-warning';
+                else if (/\.(zip|rar|7z|tar|gz)$/i.test(href)) icon = 'fa-file-archive text-danger';
+                else if (/\.(jpg|jpeg|png|gif|svg|webp)$/i.test(href)) icon = 'fa-file-image text-success';
+                else if (/\.(pdf)$/i.test(href)) icon = 'fa-file-pdf text-danger';
+                else if (/\.(doc|docx|txt|rtf)$/i.test(href)) icon = 'fa-file-alt text-primary';
+                else if (/\.(xls|xlsx|csv)$/i.test(href)) icon = 'fa-file-excel text-success';
+                else if (/\.(mp4|mov|avi)$/i.test(href)) icon = 'fa-file-video text-info';
+                else if (/\.(mp3|wav)$/i.test(href)) icon = 'fa-file-audio text-warning';
+
+                link.innerHTML = `<i class="fas ${icon} file-icon"></i>${text}`;
+            });
+        });
+    </script>
+</body>
+</html>

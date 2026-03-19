@@ -1,0 +1,25 @@
+{
+  "name": "helpdesk-storage",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Cервіс підтримки, що надає оперативну допомогу користувачам у вирішенні ІТ-інцидентів та запитів, забезпечуючи швидке відновлення роботи систем і сервісів.",
+  "license": "MIT",
+  "author": {
+    "name": "Dmytro Baklai",
+    "email": "d.n.baklai@gmail.com",
+    "url": "https://baklai.github.io"
+  },
+  "keywords": [
+    "nginx",
+    "storage"
+  ],
+  "homepage": "https://github.com/baklai/helpdesk-storage#readme",
+  "bugs": {
+    "url": "https://github.com/baklai/helpdesk-storage/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/baklai/helpdesk-storage.git"
+  }
+}

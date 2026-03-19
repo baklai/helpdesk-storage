@@ -1,0 +1,6 @@
+services:
+  helpdesk-storage:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: baklai/helpdesk-storage:latest
