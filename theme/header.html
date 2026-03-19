@@ -1,19 +1,24 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Files Directory Listing">
-    <meta name="color-scheme" content="light dark">
-    <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
-    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#282523">
-    <link rel="shortcut icon" href="/.nginxy/img/favicon.png">
-    <link rel="stylesheet" href="/.nginxy/css/style.css">
+<!doctype html>
+<html lang="uk">
+  <head>
+    <meta charset="utf-8" />
+    <title>Файлы</title>
+    <link rel="stylesheet" href="/_internal_theme/css/style.css" />
+    <link rel="stylesheet" href="/_internal_theme/css/all.min.css" />
+  </head>
 
-    <title>File Server</title>
+  <body>
+    <div class="container">
+      <div class="header">
+        <div class="title">
+          <i class="fas fa-folder-open"></i>
+          <span>Файлове сховище</span>
+        </div>
+      </div>
 
-    <!-- Modern JavaScript without jQuery -->
-    <script src="/.nginxy/js/config.js"></script>
-</head>
-<body>
-    <h1>
+      <div id="file-list-container">
+        <pre style="display: none"></pre>
+      </div>
+    </div>
+  </body>
+</html>
