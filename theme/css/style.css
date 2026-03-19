@@ -21,6 +21,10 @@ body {
   overflow: hidden;
 }
 
+.file-list-container {
+  overflow-y: auto;
+}
+
 .header {
   padding: 16px 20px;
   border-bottom: 1px solid #eee;
@@ -39,7 +43,6 @@ body {
   overflow-y: auto;
 }
 
-/* GRID как в Google Drive */
 .file-row {
   display: grid;
   grid-template-columns: 1fr 180px 100px;

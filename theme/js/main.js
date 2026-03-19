@@ -1,27 +1,28 @@
 document.addEventListener('DOMContentLoaded', () => {
   const container = document.getElementById('file-list-container');
   const pre = container.querySelector('pre');
+
   if (!pre) return;
+
+  const months = {
+    Jan: '01',
+    Feb: '02',
+    Mar: '03',
+    Apr: '04',
+    May: '05',
+    Jun: '06',
+    Jul: '07',
+    Aug: '08',
+    Sep: '09',
+    Oct: '10',
+    Nov: '11',
+    Dec: '12'
+  };
 
   const lines = pre.innerHTML.split('\n');
 
   let html = '';
   let count = 0;
-
-  const months = {
-    Jan: 'Jan',
-    Feb: 'Feb',
-    Mar: 'Mar',
-    Apr: 'Apr',
-    May: 'May',
-    Jun: 'Jun',
-    Jul: 'Jul',
-    Aug: 'Aug',
-    Sep: 'Sep',
-    Oct: 'Oct',
-    Nov: 'Nov',
-    Dec: 'Dec'
-  };
 
   lines.forEach(line => {
     const match = line.match(
@@ -36,15 +37,32 @@ document.addEventListener('DOMContentLoaded', () => {
 
     count++;
 
-    let icon = 'fa-file';
+    const monthDigital = months[month] || '01';
 
-    if (href.endsWith('/')) icon = 'fa-folder';
-    else if (name.match(/\.(png|jpg|jpeg|gif|webp)$/i)) icon = 'fa-image';
-    else if (name.match(/\.pdf$/i)) icon = 'fa-file-pdf';
-    else if (name.match(/\.(zip|rar|7z|tar)$/i)) icon = 'fa-file-archive';
+    const fullDate = `${day}/${monthDigital}/${year} ${time}`;
+
+    let displayName = name;
+    let icon = 'fa-file';
+    let isParent = href === '../';
+
+    if (isParent) {
+      displayName = 'Назад';
+      icon = 'fa-arrow-left';
+    } else {
+      count++;
+
+      if (href.endsWith('/')) icon = 'fa-folder';
+      else if (name.match(/\.(png|jpg|jpeg|gif|webp)$/i)) icon = 'fa-image';
+      else if (name.match(/\.pdf$/i)) icon = 'fa-file-pdf';
+      else if (name.match(/\.(zip|rar|7z|tar)$/i)) icon = 'fa-file-archive';
+    }
+
+    const isBlank = name.match(/\.(pdf|jpg|jpeg|png|gif|webp|txt)$/i);
+    const target = isBlank ? 'target="_blank"' : '';
+    const rel = isBlank ? 'rel="noopener noreferrer"' : '';
 
     html += `
-      <a href="${href}" class="file-link">
+      <a href="${href}" class="file-link" ${target} ${rel}>
         <div class="file-row">
 
           <div class="file-name">
@@ -53,7 +71,7 @@ document.addEventListener('DOMContentLoaded', () => {
           </div>
 
           <div class="file-date">
-            ${day} ${month} ${year} ${time}
+            ${fullDate}
           </div>
 
           <div class="file-size">
@@ -67,5 +85,5 @@ document.addEventListener('DOMContentLoaded', () => {
 
   container.innerHTML = html;
 
-  document.getElementById('file-counter').innerText = `Файлов: ${count}`;
+  document.getElementById('file-counter').innerText = `Файлів: ${count}`;
 });
