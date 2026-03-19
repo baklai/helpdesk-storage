@@ -35,6 +35,13 @@
         overflow: hidden;
       }
 
+      .container h1 {
+        display: flex !important;
+        font-weight: 700;
+        color: #2c3e50;
+        margin-bottom: 20px;
+      }
+
       .header-static {
         padding: 30px 30px 10px 30px;
         flex-shrink: 0;
@@ -46,12 +53,17 @@
         padding: 0 30px;
       }
 
+      hr:first-of-type {
+        display: none;
+      }
+
       h1 {
         font-weight: 700;
         color: #2c3e50;
         margin-bottom: 20px;
         display: flex;
         align-items: center;
+        display: none;
       }
       h1 i {
         margin-right: 15px;
