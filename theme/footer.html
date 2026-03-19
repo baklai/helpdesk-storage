@@ -1,85 +1,19 @@
-</div> <div class="footer-static" style="padding: 15px 40px; background: #fff; border-top: 1px solid #edf2f7; flex-shrink: 0; display: flex; justify-content: space-between; align-items: center;">
-        <div class="text-muted small">
-          <i class="fas fa-info-circle me-1"></i> Оберіть файл для завантаження. Сховище працює в автономному режимі.
-        </div>
-        <div class="text-muted small" id="file-counter">
-          </div>
-      </div>
-    </div> <script>
-      document.addEventListener("DOMContentLoaded", function() {
-        const container = document.getElementById('file-list-container');
-        const pre = container.querySelector('pre');
-        if (!pre) return;
-
-        const months = {
-          'Jan': 'січ', 'Feb': 'лют', 'Mar': 'бер', 'Apr': 'квіт',
-          'May': 'трав', 'Jun': 'черв', 'Jul': 'лип', 'Aug': 'серп',
-          'Sep': 'вер', 'Oct': 'жовт', 'Nov': 'лист', 'Dec': 'груд'
-        };
-
-        const lines = pre.innerHTML.split('\n');
-        let tableHtml = `
-          <table class="table">
-            <thead>
-              <tr>
-                <th class="col-name">Назва файлу</th>
-                <th class="col-date">Дата зміни</th>
-                <th class="col-size">Розмір</th>
-              </tr>
-            </thead>
-            <tbody>`;
-
-        let fileCount = 0;
-
-        lines.forEach(line => {
-          const match = line.match(/<a href="([^"]+)">([^<]+)<\/a>\s+(\d{2})-([A-Za-z]{3})-(\d{4})\s+(\d{2}:\d{2})\s+([\d.-]+[KMG]?|-)/);
-          
-          if (match) {
-            const [_, href, name, day, month, year, time, size] = match;
-            
-            if (href === "../") return;
-
-            fileCount++;
-
-            const ukrDate = `${day} ${months[month] || month} ${year}, ${time}`;
-
-            let iconClass = 'fa-file';
-            let iconColor = '#4a5568';
-
-            if (href.endsWith('/')) {
-              iconClass = 'fa-folder';
-              iconColor = '#3182ce';
-            } else if (name.match(/\.(jpg|jpeg|png|gif|svg|webp)$/i)) {
-              iconClass = 'fa-file-image';
-            } else if (name.match(/\.(pdf)$/i)) {
-              iconClass = 'fa-file-pdf';
-            } else if (name.match(/\.(zip|rar|7z|tar|gz)$/i)) {
-              iconClass = 'fa-file-archive';
-            } else if (name.match(/\.(exe|msi|deb|rpm)$/i)) {
-              iconClass = 'fa-file-code';
-            }
-
-            tableHtml += `
-              <tr>
-                <td class="col-name">
-                  <a href="${href}" class="file-link">
-                    <i class="fas ${iconClass} file-icon" style="color: ${iconColor}"></i>
-                    <span>${name}</span>
-                  </a>
-                </td>
-                <td class="col-date">${ukrDate}</td>
-                <td class="col-size">${size === '-' ? '--' : size}</td>
-              </tr>`;
-          }
-        });
-
-        tableHtml += '</tbody></table>';
-
-        pre.innerHTML = tableHtml;
-        
-        const counter = document.getElementById('file-counter');
-        if (counter) counter.innerText = `Усього об'єктів: ${fileCount}`;
-      });
-    </script>
-  </body>
+	<!-- End of nginx output -->
+	<div id="footer">
+		<div class="text-center">
+			<p>
+				<span>File Server</span>
+				<br>
+				<a id="footerURL" href="https://www.lfsystems.com.co">
+					* IT Team - lfsystems *
+				</a>
+				<br>
+				
+				<a href="https://www.lfsystems.com.co" title="principal">
+					<img class="footer-logo" src="/.nginxy/img/logo.svg" alt="Logo" width="120">
+				</a>
+			</p>
+		</div>
+	</div>
+</body>
 </html>
